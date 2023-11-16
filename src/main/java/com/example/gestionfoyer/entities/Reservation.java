@@ -16,8 +16,7 @@ import java.util.Set;
 @Entity
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idReservation;
+    private String idReservation;
     private LocalDate anneeUniversitaire;
     private boolean estValide;
     @ManyToMany(mappedBy = "reservations")
