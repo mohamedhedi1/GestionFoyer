@@ -1,6 +1,7 @@
 package com.example.gestionfoyer.entities;
 
 import com.example.gestionfoyer.enums.TypeChambre;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Chambre {
     private TypeChambre typeC;
     @OneToMany
     private Set<Reservation> reservations;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idBloc", nullable=false)
     private Bloc bloc;

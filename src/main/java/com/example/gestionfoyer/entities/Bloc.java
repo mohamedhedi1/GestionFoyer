@@ -1,5 +1,6 @@
 package com.example.gestionfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +22,7 @@ public class Bloc {
     private Long capaciteBloc;
     @OneToMany(mappedBy ="bloc")
     private Set<Chambre> chambres;
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name="idFoyer",nullable = false)
     private Foyer foyer;

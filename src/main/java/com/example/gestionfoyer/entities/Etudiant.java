@@ -1,5 +1,6 @@
 package com.example.gestionfoyer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +24,7 @@ public class Etudiant {
     private Long cin;
     private String ecole;
     private LocalDate dateNaissance;
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "etudiant_reservation",
