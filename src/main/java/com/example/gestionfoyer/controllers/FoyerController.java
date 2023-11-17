@@ -1,8 +1,6 @@
 package com.example.gestionfoyer.controllers;
 
 import com.example.gestionfoyer.entities.Foyer;
-import com.example.gestionfoyer.exceptions.GlobalExceptionHandler;
-import com.example.gestionfoyer.exceptions.MyResourceNotFoundException;
 import com.example.gestionfoyer.services.IFoyerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

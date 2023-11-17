@@ -1,7 +1,7 @@
 package com.example.gestionfoyer.services;
 
 import com.example.gestionfoyer.entities.Bloc;
-import com.example.gestionfoyer.exceptions.MyResourceNotFoundException;
+import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.BlocRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class IBlocServiceImp implements IBlocService{
 
     @Override
     public Bloc retrieveBloc(long idBloc) {
-        return this.blocRepository.findById(idBloc).orElseThrow(() -> new MyResourceNotFoundException("Bloc avec l'id"+idBloc+" n'existe pas!"));
+        return this.blocRepository.findById(idBloc).orElseThrow(() -> new ResourceNotFoundException("bloc","id", Long.toString(idBloc)));
     }
 
     @Override

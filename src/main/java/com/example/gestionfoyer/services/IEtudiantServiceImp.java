@@ -1,7 +1,7 @@
 package com.example.gestionfoyer.services;
 
 import com.example.gestionfoyer.entities.Etudiant;
-import com.example.gestionfoyer.exceptions.MyResourceNotFoundException;
+import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.EtudiantRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,8 +28,8 @@ public class IEtudiantServiceImp implements IEtudiantService {
     }
 
     @Override
-    public Etudiant retrieveEtudiant(long idEtudiant) throws MyResourceNotFoundException {
-        return this.etudiantRepository.findById(idEtudiant).orElseThrow(() -> new MyResourceNotFoundException("L'etudiant avec l'id"+idEtudiant+" n'existe pas!"));
+    public Etudiant retrieveEtudiant(long idEtudiant)  {
+        return this.etudiantRepository.findById(idEtudiant).orElseThrow(() -> new ResourceNotFoundException("etudiant","id", Long.toString(idEtudiant)));
     }
 
     @Override

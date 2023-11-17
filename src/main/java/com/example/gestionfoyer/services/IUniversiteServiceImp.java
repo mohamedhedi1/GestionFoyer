@@ -1,7 +1,7 @@
 package com.example.gestionfoyer.services;
 
 import com.example.gestionfoyer.entities.Universite;
-import com.example.gestionfoyer.exceptions.MyResourceNotFoundException;
+import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.UniversiteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,6 @@ public class IUniversiteServiceImp implements IUniversiteService{
 
     @Override
     public Universite retrieveUniversite(long idUniversite) {
-        return universiteRepository.findById(idUniversite).orElseThrow(() -> new MyResourceNotFoundException("Universite avec l'id"+idUniversite+" n'existe pas!"));
+        return universiteRepository.findById(idUniversite).orElseThrow(() -> new ResourceNotFoundException("universite","id", Long.toString(idUniversite)));
     }
 }

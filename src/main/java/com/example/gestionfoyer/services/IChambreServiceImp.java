@@ -1,7 +1,7 @@
 package com.example.gestionfoyer.services;
 
 import com.example.gestionfoyer.entities.Chambre;
-import com.example.gestionfoyer.exceptions.MyResourceNotFoundException;
+import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.ChambreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +29,6 @@ public class IChambreServiceImp implements IChambreService{
 
     @Override
     public Chambre retrieveChambre(long idChambre) {
-        return chambreRepository.findById(idChambre).orElseThrow(() -> new MyResourceNotFoundException("Chambre avec l'id"+idChambre+" n'existe pas!"));
+        return chambreRepository.findById(idChambre).orElseThrow(() -> new ResourceNotFoundException("chambre","id", Long.toString(idChambre)));
     }
 }

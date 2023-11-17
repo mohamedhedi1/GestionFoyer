@@ -4,4 +4,5 @@ import com.example.gestionfoyer.entities.Etudiant;
 import org.springframework.data.repository.CrudRepository;
 
 public interface EtudiantRepository extends CrudRepository<Etudiant,Long> {
+    Etudiant findByCin(Long cin);
 }
