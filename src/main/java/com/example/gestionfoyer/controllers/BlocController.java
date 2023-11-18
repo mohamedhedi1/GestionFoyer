@@ -44,4 +44,10 @@ public class BlocController {
         this.blocService.removeBloc(idBloc);
     }
 
+    @PostMapping("/affecterChambresABloc/{idBloc}")
+    public Bloc affecterChambresABloc(@RequestBody List<Long> numChambre,@PathVariable("idBloc") long idBloc)
+    {
+        return this.blocService.affecterChambresABloc(numChambre,idBloc);
+    }
+
 }

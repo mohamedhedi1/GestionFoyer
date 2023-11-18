@@ -38,4 +38,15 @@ public class UniversiteController {
         return this.universiteService.retrieveUniversite(idUniversite);
     }
 
+    @PostMapping("/affecterFoyerAUniversite/{nomUniversite}/{idFoyer}")
+    public Universite affecterFoyerAUniversite(@PathVariable("idFoyer") long idFoyer,@PathVariable("nomUniversite") String nomUniversite) {
+        return this.universiteService.affecterFoyerAUniversite(idFoyer,nomUniversite);
+    }
+
+    @PutMapping("/desaffecterFoyerAUniversite/{idUniversite}")
+    public Universite desaffecterFoyerAUniversite(@PathVariable("idUniversite") long idUniversite)
+    {
+        return this.universiteService.desaffecterFoyerAUniversite(idUniversite);
+    }
+
 }

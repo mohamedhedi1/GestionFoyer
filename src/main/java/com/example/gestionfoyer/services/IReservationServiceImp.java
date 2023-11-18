@@ -7,6 +7,7 @@ import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.ChambreRepository;
 import com.example.gestionfoyer.repositories.EtudiantRepository;
 import com.example.gestionfoyer.repositories.ReservationRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -82,4 +83,48 @@ public class IReservationServiceImp implements IReservationService{
            throw  new ResourceNotFoundException("Chambre","id", Long.toString(idChambre));
         }
     }
+
+    @Override
+    @Transactional
+    public Reservation annulerReservation(long cinEtudiant) {
+        Etudiant etudiant = this.etudiantRepository.findByCin(cinEtudiant);
+        Set<Reservation> reservations = etudiant.getReservations();
+        for(Reservation reservation : reservations)
+        {
+            if(reservation.getAnneeUniversitaire().getYear() == LocalDate.now().getYear())
+            {
+                Chambre chambre =chambreRepository.findChambreByIdReservation(reservation.getIdReservation());
+                if(chambre.getTypeC().toString().equals("SIMPLE"))
+                {
+                    Set<Reservation> reservationSet = chambre.getReservations();
+                    reservationSet.remove(reservation);
+                    chambre.setReservations(reservationSet);
+                    reservationRepository.delete(reservation);
+
+
+                    return reservation;
+                }else{
+                    reservation.setEstValide(true);
+                    Set<Etudiant> etudiants = reservation.getEtudiants();
+                    etudiants.remove(etudiant);
+                    reservation.setEtudiants(etudiants);
+                    if(etudiants.isEmpty())
+                    {
+                        Set<Reservation> reservationSet = chambre.getReservations();
+                        reservationSet.remove(reservation);
+                        chambre.setReservations(reservationSet);
+                        reservationRepository.delete(reservation);
+
+                    }
+                    return reservation;
+
+
+                }
+            }
+
+        }
+        return null;
+    }
+
+
 }

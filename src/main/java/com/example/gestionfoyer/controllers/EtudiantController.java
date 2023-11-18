@@ -21,7 +21,7 @@ public class EtudiantController {
     }
 
     @PostMapping
-    public List<Etudiant> addEtudiants (@RequestBody  List<Etudiant> etudiants)
+    public List<Etudiant> addEtudiants(@RequestBody  List<Etudiant> etudiants)
     {
         return etudiantService.addEtudiants(etudiants);
     }

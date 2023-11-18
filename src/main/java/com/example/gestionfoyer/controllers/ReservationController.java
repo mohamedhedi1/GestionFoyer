@@ -35,4 +35,10 @@ public class ReservationController {
     {
         return this.reservationService.ajouterReservation(idChambre,cinEtudiant);
     }
+
+    @PutMapping("/annulerReservation/{cinEtudiant}")
+    public Reservation annulerReservation(@PathVariable long cinEtudiant)
+    {
+        return this.reservationService.annulerReservation(cinEtudiant);
+    }
 }
