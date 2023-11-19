@@ -1,6 +1,7 @@
 package com.example.gestionfoyer.controllers;
 
 import com.example.gestionfoyer.entities.Chambre;
+import com.example.gestionfoyer.enums.TypeChambre;
 import com.example.gestionfoyer.services.IChambreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +37,18 @@ public class ChambreController {
     public Chambre retrieveChambre (@PathVariable("id") long idChambre)
     {
         return this.chambreService.retrieveChambre(idChambre);
+    }
+
+    @GetMapping("/getChambresParNomUniversite/{nomUniversite}")
+    public List<Chambre> getChambresParNomUniversite(@PathVariable("nomUniversite") String nomUniversite)
+    {
+        return this.chambreService.getChambresParNomUniversite(nomUniversite);
+    }
+
+    @GetMapping("getChambresParBlocEtType/{idBloc}/{typeC}")
+    public List<Chambre> getChambresParBlocEtType(@PathVariable("idBloc") long idBloc, @PathVariable("typeC") TypeChambre typeC)
+    {
+        return this.chambreService.getChambresParBlocEtType(idBloc,typeC);
     }
 
 }

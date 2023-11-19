@@ -1,5 +1,6 @@
 package com.example.gestionfoyer.controllers;
 
+import com.example.gestionfoyer.entities.Chambre;
 import com.example.gestionfoyer.entities.Reservation;
 import com.example.gestionfoyer.services.IReservationService;
 import lombok.AllArgsConstructor;
@@ -37,8 +38,9 @@ public class ReservationController {
     }
 
     @PutMapping("/annulerReservation/{cinEtudiant}")
-    public Reservation annulerReservation(@PathVariable long cinEtudiant)
+    public Reservation annulerReservation(@PathVariable("cinEtudiant") long cinEtudiant)
     {
         return this.reservationService.annulerReservation(cinEtudiant);
     }
+
 }

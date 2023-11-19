@@ -1,6 +1,7 @@
 package com.example.gestionfoyer.services;
 
 import com.example.gestionfoyer.entities.Chambre;
+import com.example.gestionfoyer.enums.TypeChambre;
 import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.ChambreRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,5 +31,15 @@ public class IChambreServiceImp implements IChambreService{
     @Override
     public Chambre retrieveChambre(long idChambre) {
         return chambreRepository.findById(idChambre).orElseThrow(() -> new ResourceNotFoundException("chambre","id", Long.toString(idChambre)));
+    }
+
+    @Override
+    public List<Chambre> getChambresParNomUniversite(String nomUniversite) {
+        return chambreRepository.getChambresParNomUniversite(nomUniversite);
+    }
+
+    @Override
+    public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
+        return this.chambreRepository.getChambresParBlocEtType(idBloc,typeC);
     }
 }
