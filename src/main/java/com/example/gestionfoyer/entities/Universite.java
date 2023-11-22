@@ -15,6 +15,7 @@ public class Universite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idUniversite;
+    @Column(unique=true)
     private String nomUniversite;
     private String adresse;
     @OneToOne(cascade = CascadeType.ALL)

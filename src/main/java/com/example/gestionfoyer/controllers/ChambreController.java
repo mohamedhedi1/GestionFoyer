@@ -45,10 +45,16 @@ public class ChambreController {
         return this.chambreService.getChambresParNomUniversite(nomUniversite);
     }
 
-    @GetMapping("getChambresParBlocEtType/{idBloc}/{typeC}")
+    @GetMapping("/getChambresParBlocEtType/{idBloc}/{typeC}")
     public List<Chambre> getChambresParBlocEtType(@PathVariable("idBloc") long idBloc, @PathVariable("typeC") TypeChambre typeC)
     {
         return this.chambreService.getChambresParBlocEtType(idBloc,typeC);
+    }
+
+    @GetMapping("/getChambresNonReserveParNomUniversiteEtTypeChambre/{nomUniversite}/{type}")
+    List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(@PathVariable("nomUniversite") String nomUniversite,@PathVariable("type") TypeChambre type)
+    {
+        return this.chambreService.getChambresNonReserveParNomUniversiteEtTypeChambre(nomUniversite,type);
     }
 
 }

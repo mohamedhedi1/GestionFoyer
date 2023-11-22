@@ -23,5 +23,9 @@ public interface ChambreRepository extends CrudRepository<Chambre,Long> {
     public List<Chambre> getChambresParBlocEtType (@Param("idBloc") long idBloc,@Param("typec") TypeChambre typeC);
 
     List<Chambre> findChambresByTypeCAndBloc(TypeChambre typeC, Bloc bloc);
+
+    @Query(value="select * from chambre where typec = :type and id_chambre not in (select chambre_id_chambre from chambre_reservations) and id_bloc in (select id_bloc from bloc where id_foyer in (select id_foyer from universite where nom_universite = :nom))",nativeQuery = true)
+    List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(@Param("nom") String nomUniversite,@Param("type") TypeChambre type);
+
 }
 

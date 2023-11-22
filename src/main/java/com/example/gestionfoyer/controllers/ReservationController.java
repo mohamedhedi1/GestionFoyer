@@ -6,6 +6,7 @@ import com.example.gestionfoyer.services.IReservationService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -42,5 +43,13 @@ public class ReservationController {
     {
         return this.reservationService.annulerReservation(cinEtudiant);
     }
+
+    @GetMapping("/getReservationParAnneeUniversitaireEtNomUniversite/{anneeUniversite}/{nomUniversite}")
+    public List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(@PathVariable("anneeUniversite") LocalDate anneeUniversite,@PathVariable("nomUniversite") String nomUniversite)
+    {
+        return this.reservationService.getReservationParAnneeUniversitaireEtNomUniversite(anneeUniversite,nomUniversite);
+    }
+
+
 
 }

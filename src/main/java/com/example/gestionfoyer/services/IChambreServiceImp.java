@@ -42,4 +42,9 @@ public class IChambreServiceImp implements IChambreService{
     public List<Chambre> getChambresParBlocEtType(long idBloc, TypeChambre typeC) {
         return this.chambreRepository.getChambresParBlocEtType(idBloc,typeC);
     }
+
+    @Override
+    public List<Chambre> getChambresNonReserveParNomUniversiteEtTypeChambre(String nomUniversite, TypeChambre type) {
+        return this.chambreRepository.getChambresNonReserveParNomUniversiteEtTypeChambre(nomUniversite,type);
+    }
 }
