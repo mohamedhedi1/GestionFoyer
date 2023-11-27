@@ -2,6 +2,7 @@ package com.example.gestionfoyer.controllers;
 
 import com.example.gestionfoyer.entities.Etudiant;
 import com.example.gestionfoyer.services.IEtudiantService;
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,7 @@ public class EtudiantController {
     }
 
     @PostMapping
-    public Etudiant addEtudiant(@RequestBody  Etudiant etudiant)
-    {
+    public Etudiant addEtudiant(@RequestBody  Etudiant etudiant) throws MessagingException {
         return etudiantService.addEtudiant(etudiant);
     }
     @PostMapping("/listEtudiants")
