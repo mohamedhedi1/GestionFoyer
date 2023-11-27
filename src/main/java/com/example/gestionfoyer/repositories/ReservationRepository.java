@@ -32,4 +32,5 @@ public interface ReservationRepository extends CrudRepository<Reservation,String
             "  )",nativeQuery = true)
     List<Reservation> getReservationParAnneeUniversitaireEtNomUniversite(@Param("annee") LocalDate anneeUniversite,@Param("nom") String nomUniversite);
 
+    boolean existsByEtudiantsCinAndAnneeUniversitaireBetween(Long etudiants_cin, LocalDate startDate, LocalDate endDate);
 }

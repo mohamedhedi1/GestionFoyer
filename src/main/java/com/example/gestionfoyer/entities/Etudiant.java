@@ -22,6 +22,7 @@ public class Etudiant {
     private String nomEt;
     private String prenomEt;
     private Long cin;
+    private String email;
     private String ecole;
     private LocalDate dateNaissance;
     @JsonIgnore

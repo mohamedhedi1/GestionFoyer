@@ -37,4 +37,9 @@ public class IEtudiantServiceImp implements IEtudiantService {
         this.etudiantRepository.deleteById(idEtudiant);
 
     }
+
+    @Override
+    public Etudiant addEtudiant(Etudiant etudiant) {
+        return this.etudiantRepository.save(etudiant);
+    }
 }

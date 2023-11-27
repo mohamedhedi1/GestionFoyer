@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/etudiants")
 @RequiredArgsConstructor
@@ -21,6 +23,11 @@ public class EtudiantController {
     }
 
     @PostMapping
+    public Etudiant addEtudiant(@RequestBody  Etudiant etudiant)
+    {
+        return etudiantService.addEtudiant(etudiant);
+    }
+    @PostMapping("/listEtudiants")
     public List<Etudiant> addEtudiants(@RequestBody  List<Etudiant> etudiants)
     {
         return etudiantService.addEtudiants(etudiants);
