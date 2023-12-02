@@ -16,4 +16,7 @@ public interface IBlocService {
     void removeBloc (long idBloc);
     Bloc affecterChambresABloc(List<Long> numChambre, long
             idBloc) ;
+
+    public void testSchedulure();
+
 }

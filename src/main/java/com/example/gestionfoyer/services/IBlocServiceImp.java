@@ -6,6 +6,9 @@ import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
 import com.example.gestionfoyer.repositories.BlocRepository;
 import com.example.gestionfoyer.repositories.ChambreRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -15,6 +18,7 @@ import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class IBlocServiceImp implements IBlocService{
     private final BlocRepository blocRepository;
     private final ChambreRepository chambreRepository;
@@ -58,4 +62,13 @@ public class IBlocServiceImp implements IBlocService{
             throw new ResourceNotFoundException("bloc","id",Long.toString(idBloc));
         }
     }
+
+    @Override
+    @Scheduled(fixedRate = 6000) //add     @EnableScheduling in mainApplication
+    public void testSchedulure() {
+        log.info("hello");
+
+    }
+
+
 }

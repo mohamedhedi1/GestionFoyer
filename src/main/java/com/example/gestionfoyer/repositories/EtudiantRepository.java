@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface EtudiantRepository extends CrudRepository<Etudiant,Long> {
     Etudiant findByCin(Long cin);
+
+    Etudiant findByEmail(String email);
 }

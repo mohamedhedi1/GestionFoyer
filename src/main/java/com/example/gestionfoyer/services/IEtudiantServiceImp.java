@@ -50,6 +50,8 @@ public class IEtudiantServiceImp implements IEtudiantService {
     public void removeEtudiant(long idEtudiant) {
         this.etudiantRepository.deleteById(idEtudiant);
 
+
+
     }
 
     @Override

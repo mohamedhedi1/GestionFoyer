@@ -49,5 +49,6 @@ public class EtudiantController {
     public void removeEtudiant(@PathVariable("id") long idEtudiant)
     {
         etudiantService.removeEtudiant(idEtudiant);
+
     }
 }

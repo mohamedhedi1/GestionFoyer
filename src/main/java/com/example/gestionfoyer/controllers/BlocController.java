@@ -3,14 +3,18 @@ package com.example.gestionfoyer.controllers;
 import com.example.gestionfoyer.entities.Bloc;
 import com.example.gestionfoyer.services.IBlocService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/blocs")
 @RequiredArgsConstructor
+@Slf4j
 public class BlocController {
     private final IBlocService blocService;
 
@@ -49,6 +53,13 @@ public class BlocController {
     public Bloc affecterChambresABloc(@RequestBody List<Long> numChambre,@PathVariable("idBloc") long idBloc)
     {
         return this.blocService.affecterChambresABloc(numChambre,idBloc);
+    }
+
+    @GetMapping("/date/{d}")
+    public void sendDate(@PathVariable("d") LocalDate d) //@DateTimeFormat(pattern = "yyyy-MM-dd")
+    {
+
+        log.info(String.valueOf(d));
     }
 
 }

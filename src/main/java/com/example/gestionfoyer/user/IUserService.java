@@ -8,4 +8,7 @@ public interface IUserService {
 
     List<User> getAllUsers();
 
+    Long findStudentIdByEmail(String email);
+
+    UserDto getUserByEmail(String email);
 }

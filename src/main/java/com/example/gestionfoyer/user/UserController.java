@@ -24,4 +24,15 @@ public class UserController {
         return this.userService.getAllUsers();
     }
 
+    @GetMapping("findStudentIdByEmail/{email}")
+    public Long findStudentIdByEmail(@PathVariable("email") String email)
+    {
+        return this.userService.findStudentIdByEmail(email);
+    }
+    @GetMapping("/UserByEmail/{email}")
+    public UserDto getUserByEmail(@PathVariable("email") String email)
+    {
+        return this.userService.getUserByEmail(email);
+    }
+
 }
