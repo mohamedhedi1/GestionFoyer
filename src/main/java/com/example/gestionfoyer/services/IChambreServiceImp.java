@@ -1,8 +1,10 @@
 package com.example.gestionfoyer.services;
 
+import com.example.gestionfoyer.entities.Bloc;
 import com.example.gestionfoyer.entities.Chambre;
 import com.example.gestionfoyer.enums.TypeChambre;
 import com.example.gestionfoyer.exceptions.ResourceNotFoundException;
+import com.example.gestionfoyer.repositories.BlocRepository;
 import com.example.gestionfoyer.repositories.ChambreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class IChambreServiceImp implements IChambreService{
     private final ChambreRepository chambreRepository;
+    private final BlocRepository blocRepository;
     @Override
     public List<Chambre> retrieveAllChambres() {
         return (List<Chambre>) chambreRepository.findAll();
@@ -20,6 +23,9 @@ public class IChambreServiceImp implements IChambreService{
 
     @Override
     public Chambre addChambre(Chambre c) {
+        Bloc b = this.blocRepository.findById(c.getBloc().getIdBloc()).orElse(null);
+        System.out.println(b);
+        c.setBloc(b);
         return chambreRepository.save(c);
     }
 

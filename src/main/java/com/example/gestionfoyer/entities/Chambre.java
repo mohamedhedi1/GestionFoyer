@@ -24,7 +24,7 @@ public class Chambre {
     private TypeChambre typeC;
     @OneToMany
     private Set<Reservation> reservations;
-    @JsonIgnore
+    //@JsonIgnore
     @ManyToOne
     @JoinColumn(name="idBloc", nullable=false)
     private Bloc bloc;

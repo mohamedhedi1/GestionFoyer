@@ -34,6 +34,7 @@ public class IBlocServiceImp implements IBlocService{
 
     @Override
     public Bloc addBloc(Bloc bloc) {
+
         return this.blocRepository.save(bloc);
     }
 

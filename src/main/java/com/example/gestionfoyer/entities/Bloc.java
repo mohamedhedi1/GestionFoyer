@@ -20,6 +20,7 @@ public class Bloc {
     private Long idBloc;
     private String nomBloc;
     private Long capaciteBloc;
+    @JsonIgnore
     @OneToMany(mappedBy ="bloc")
     private Set<Chambre> chambres;
     @JsonIgnore
